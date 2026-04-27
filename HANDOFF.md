@@ -158,11 +158,15 @@ Renders as: `─── WELCOME ───`
 
 This is the signature design detail. It deliberately echoes the lettering style on Victorian peal boards (small capitals, separator rules). Use it for every section label. Don't introduce alternative eyebrow patterns.
 
+### Sticky header
+
+The site header (`header.site`) is sticky on scroll across every page — `position: sticky; top: 0; z-index: 50;` with a 1px `box-shadow` standing in for the old border-bottom so the hairline still reads. The header background is opaque (`var(--paper)`) so content scrolling underneath doesn't bleed through. No JavaScript involved; CSS handles it. Because the header is always visible, don't add a "back to top" button — it would be redundant.
+
 ### Heroes
 
 Two kinds:
 
-- **`<section class="hero">`** — full-bleed, used **only** on the home page. The church photograph is treated with reverence: large, with a soft gradient at the bottom, title set in Cormorant italics on top.
+- **`<section class="hero-spread">`** — magazine-spread layout, used **only** on the home page. Photograph of the church on the left (an `<img>` element with a real `alt`, not a CSS background — better for accessibility and SEO), welcome typography on cream to the right. The whole church is visible in the photo: spire, weather vane, flint walls, porch, gravestones. Title set in Cormorant with the word "Bell Ringers" in burgundy italic.
 - **`<section class="page-hero">`** — typographic, used on every sub-page. Eyebrow, large title, italic lede, no image. Keeps the homepage hero special and stops the site feeling repetitive.
 
 If a future page wants imagery in its hero, work it into a section *below* the `page-hero` block, not inside it. The page-hero stays typographic.
@@ -192,14 +196,17 @@ There is almost no motion. Hover transitions on links and buttons (`.2s` colour 
 
 ### Responsive
 
-Two breakpoints:
+Two breakpoints, plus one deliberate exception:
 
 ```css
+@media (max-width: 900px) { /* HOME HERO ONLY — magazine spread stacks photo above text */ }
 @media (max-width: 800px) { /* tablets, large phones — collapse multi-col grids */ }
-@media (max-width: 540px) { /* small phones — stack the nav, shrink hero */ }
+@media (max-width: 540px) { /* small phones — stack the nav */ }
 ```
 
-Everything uses `clamp()` for fluid type scaling between these. Test at 320px (very narrow phone), 540px, 800px, and 1180px+ when making changes.
+The 900px breakpoint exists only to stack `.hero-spread` early. The site's standard collapse point is 800px and that should stay the default for any new layout — but the home hero's title needs more horizontal room than other content (three lines of "St Peter's / Great Totham / Bell Ringers" in Cormorant), and at 800–900px it would have wrapped awkwardly inside the right-hand column. The 100px exception is the cleanest fix; don't generalise it to other components.
+
+Everything uses `clamp()` for fluid type scaling between these. Test at 320px (very narrow phone), 540px, 800px, 900px (the hero-stack point), and 1180px+ when making changes.
 
 ---
 

@@ -31,7 +31,10 @@ img { max-width: 100%; height: auto; display: block; }
 /* ---- Header ---- */
 header.site {
   background: var(--paper);
-  border-bottom: 1px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 0 var(--rule);
 }
 .nav-wrap {
   max-width: var(--max);
@@ -80,53 +83,90 @@ nav.primary a {
 nav.primary a:hover { color: var(--burgundy); border-color: var(--burgundy); }
 nav.primary a.current { color: var(--burgundy); border-color: var(--burgundy); }
 
-/* ---- Home hero ---- */
-.hero {
-  position: relative;
-  background: var(--ink);
-  overflow: hidden;
+/* ---- Home hero (magazine spread) ---- */
+.hero-spread {
+  display: grid;
+  grid-template-columns: 58% 42%;
+  background: var(--cream);
+  border-bottom: 1px solid var(--rule);
+  min-height: 600px;
+  max-height: 820px;
+  height: 80vh;
 }
-.hero-image {
-  position: relative;
+.hero-photo { background: var(--ink); overflow: hidden; }
+.hero-photo img {
   width: 100%;
-  height: 85vh;
-  min-height: 560px;
-  max-height: 900px;
-  background: url('resources/images/church/StPetersChurch3.jpg') center 50% / cover no-repeat;
-}
-.hero-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, rgba(31,26,20,0) 30%, rgba(31,26,20,0.65) 100%);
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
 }
 .hero-text {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  padding: 2.5rem 1.5rem 2.4rem;
-  text-align: center;
-  color: var(--paper);
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem clamp(2rem, 5vw, 4.5rem);
 }
-.hero-eyebrow {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-size: 0.95rem;
-  letter-spacing: 0.04em;
-  color: var(--stone);
-  margin-bottom: 0.6rem;
-}
+.hero-text .eyebrow { margin-bottom: 1.4rem; }
 .hero-text h1 {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 500;
-  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  font-size: clamp(2.4rem, 5.5vw, 4.4rem);
   line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1.4rem;
   letter-spacing: 0.005em;
 }
 .hero-text h1 em {
   font-style: italic;
   font-weight: 400;
-  color: var(--stone);
+  color: var(--burgundy);
+}
+.hero-text .lede {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  line-height: 1.4;
+  color: var(--ink-soft);
+  margin-bottom: 1.6rem;
+  max-width: 28em;
+}
+.hero-text .hero-affiliation {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  max-width: 28em;
+}
+
+@media (max-width: 900px) {
+  .hero-spread {
+    grid-template-columns: 1fr;
+    height: auto;
+    max-height: none;
+  }
+  .hero-photo {
+    height: 50vh;
+    min-height: 360px;
+    max-height: 480px;
+  }
+  .hero-text {
+    padding: 3rem 1.5rem;
+    text-align: center;
+  }
+  .hero-text .eyebrow {
+    display: flex;
+    justify-content: center;
+  }
+  .hero-text .lede,
+  .hero-text .hero-affiliation {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 /* ---- Sub-page hero (typographic, no big image) ---- */
@@ -633,7 +673,6 @@ footer.site .copyright {
 @media (max-width: 540px) {
   .nav-wrap { flex-direction: column; align-items: flex-start; }
   nav.primary { width: 100%; gap: 1rem 1.3rem; }
-  .hero-image { height: 70vh; }
   .photo-card img { height: 180px; }
   .peal-card img { height: 220px; }
 }
