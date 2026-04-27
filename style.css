@@ -89,10 +89,10 @@ nav.primary a.current { color: var(--burgundy); border-color: var(--burgundy); }
 .hero-image {
   position: relative;
   width: 100%;
-  height: 64vh;
-  min-height: 440px;
-  max-height: 760px;
-  background: url('resources/images/church/StPetersChurch3.jpg') center 35% / cover no-repeat;
+  height: 85vh;
+  min-height: 560px;
+  max-height: 900px;
+  background: url('resources/images/church/StPetersChurch3.jpg') center 50% / cover no-repeat;
 }
 .hero-image::after {
   content: '';
@@ -633,7 +633,7 @@ footer.site .copyright {
 @media (max-width: 540px) {
   .nav-wrap { flex-direction: column; align-items: flex-start; }
   nav.primary { width: 100%; gap: 1rem 1.3rem; }
-  .hero-image { height: 56vh; }
+  .hero-image { height: 70vh; }
   .photo-card img { height: 180px; }
   .peal-card img { height: 220px; }
 }
