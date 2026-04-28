@@ -257,6 +257,7 @@ The original site had typos that I corrected on the way through — "tennor" →
 - Bell specifications as a properly-styled table on `bells.html`
 - Mobile responsive at all breakpoints
 - All cross-page links verified
+- **Content audit pass (2026-04):** corrected three factual errors flagged in `CONTENT_AUDIT.md` — the 1912 peal is recorded on a card not a peal board (home page now reflects this, matching the existing peals-page sidebar callout); the methods list on `ringing.html` was rewritten to match the 2020 practice plan in `resources/documents/plans/`; the peal-duration framing on `peals.html` was adjusted to "the better part of three hours on these bells" because every recorded St Peter's peal in `Theotherpeals.pdf` is under three hours (these are light bells, tenor 7-0-11). Maldon & District Guild affiliation was kept on the live pages but TODO-flagged at every occurrence pending band confirmation — see "Pending — needs band input" below.
 
 ### Pending — needs band input
 
@@ -269,6 +270,10 @@ These are flagged in the README too. Each is a small piece of work once the info
 3. **News after April 2024** — the most recent dated story I had access to was the Tower Outing of 13th April 2024. Anything since then needs writing up. Use the existing `<article class="story">` structure on `news.html` as a template — `news-date`, `h3`, `<p>` paragraphs, optional `<figure>` with caption.
 
 4. **The "since 1895" claim** on the home page — based on the earliest peal board (`October26_1895.JPG`). If parish records show ringers earlier than that, the home-page line should be tightened.
+
+5. **Confirm current Maldon & District Guild membership.** The phrase appears in the hero affiliation line and footer of every page, and on the home page's 1912 paragraph. It's documented in `Theotherpeals.pdf` for the 1912 peal but absent from all post-2013 sources. Each occurrence is marked with a `<!-- TODO: confirm with band whether Maldon & District Guild affiliation is current ... -->` comment in the HTML for easy locating. If not currently a member, all references should be removed (search across the project for `Maldon & District Guild`).
+
+6. **Current methods list.** The methods sentence on `ringing.html` ("Plain Bob Doubles, Stedman Doubles, Cloister Doubles, Penultimus Doubles, Bastow Little Bob and Kent (Treble Bob Minor) — together with surprise minor methods such as Beverley and Bourne") was reconstructed from the 2020 practice plan PDF in `resources/documents/plans/`. The repertoire may have shifted since 2020 — ask the band for a current list and update if needed.
 
 ### Pending — technical
 
