@@ -651,6 +651,22 @@ footer.site a {
 footer.site a:hover { color: var(--paper); border-bottom-color: var(--brass); }
 footer.site ul { list-style: none; }
 footer.site ul li { margin-bottom: 0.45rem; }
+footer.site .footer-social { margin-top: 1rem; }
+footer.site .footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  border-bottom: 0;
+}
+footer.site .footer-social a:hover {
+  color: var(--paper);
+  border-bottom-color: transparent;
+}
+footer.site .footer-social svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
 footer.site .copyright {
   text-align: center;
   margin-top: 2.5rem;
